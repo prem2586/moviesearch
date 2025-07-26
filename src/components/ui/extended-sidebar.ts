@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { cn } from "@/lib/utils";
 import {
   Sidebar,
   SidebarContent,
@@ -13,15 +14,17 @@ import {
 const SidebarTitle = React.forwardRef<
   HTMLHeadingElement,
   React.HTMLAttributes<HTMLHeadingElement>
->(({ className, children, ...props }, ref) => (
-  <h1
-    ref={ref}
-    className="text-2xl font-bold p-4 flex items-center font-headline"
-    {...props}
-  >
-    {children}
-  </h1>
-));
+>(({ className, children, ...props }, ref) =>
+  React.createElement(
+    "h1",
+    {
+      ref: ref,
+      className: cn("text-2xl font-bold p-4 flex items-center font-headline", className),
+      ...props,
+    },
+    children
+  )
+);
 SidebarTitle.displayName = "SidebarTitle";
 
 export {

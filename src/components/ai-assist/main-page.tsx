@@ -14,6 +14,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { Bot } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 import ApiKeySettings from './api-key-settings';
 import ParameterControls from './parameter-controls';
@@ -106,7 +107,7 @@ export default function AIAssistPage() {
         <header className="flex items-center justify-between p-4 border-b">
             <h1 className="text-2xl font-bold font-headline">AI Text Generation</h1>
             <div className="md:hidden">
-                <SidebarTrigger asChild>
+                <SidebarTrigger>
                     <Button variant="ghost" size="icon">
                         <Bot />
                     </Button>
