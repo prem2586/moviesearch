@@ -3,8 +3,8 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'AIAssist',
-  description: 'Generate text with AI',
+  title: 'AI-ssist',
+  description: 'Generate text and images with AI',
 };
 
 export default function RootLayout({
