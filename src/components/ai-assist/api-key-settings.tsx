@@ -1,11 +1,8 @@
 "use client";
 
-import { useState, useEffect, type FC } from 'react';
+import { type FC } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { KeyRound, Save } from 'lucide-react';
+import { KeyRound } from 'lucide-react';
 
 interface ApiKeySettingsProps {
   apiKey: string;
@@ -13,16 +10,6 @@ interface ApiKeySettingsProps {
 }
 
 const ApiKeySettings: FC<ApiKeySettingsProps> = ({ apiKey, setApiKey }) => {
-  const [keyInput, setKeyInput] = useState(apiKey);
-
-  useEffect(() => {
-    setKeyInput(apiKey);
-  }, [apiKey]);
-
-  const handleSave = () => {
-    setApiKey(keyInput);
-  };
-
   return (
     <Card>
       <CardHeader>
@@ -31,23 +18,11 @@ const ApiKeySettings: FC<ApiKeySettingsProps> = ({ apiKey, setApiKey }) => {
             <CardTitle>API Key</CardTitle>
         </div>
         <CardDescription>
-          Enter your OpenAI API key. It is stored securely in your browser.
+          Your OpenAI API key is loaded from your environment variables.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="space-y-2">
-          <Label htmlFor="api-key">OpenAI API Key</Label>
-          <Input
-            id="api-key"
-            type="password"
-            value={keyInput}
-            onChange={(e) => setKeyInput(e.target.value)}
-            placeholder="sk-..."
-          />
-        </div>
-        <Button onClick={handleSave} className="w-full">
-            <Save className="mr-2 h-4 w-4" /> Save Key
-        </Button>
+        {/* The input field and save button are removed */}
       </CardContent>
     </Card>
   );

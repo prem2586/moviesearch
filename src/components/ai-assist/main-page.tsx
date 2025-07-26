@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { generateText, GenerateTextInput } from '@/ai/flows/generate-text';
 import { generateImage, GenerateImageInput } from '@/ai/flows/generate-image';
 import {
@@ -24,7 +24,6 @@ import ImagePromptForm from './image-prompt-form';
 import ImageOutputDisplay from './image-output-display';
 
 export default function AIAssistPage() {
-  const [apiKey, setApiKey] = useState('');
   const [prompt, setPrompt] = useState('');
   const [imagePrompt, setImagePrompt] = useState('');
   const [temperature, setTemperature] = useState(0.7);
@@ -35,22 +34,6 @@ export default function AIAssistPage() {
   const [isTextLoading, setIsTextLoading] = useState(false);
   const [isImageLoading, setIsImageLoading] = useState(false);
   const { toast } = useToast();
-
-  useEffect(() => {
-    const storedKey = localStorage.getItem('openai_api_key');
-    if (storedKey) {
-      setApiKey(storedKey);
-    }
-  }, []);
-
-  const handleApiKeySave = (key: string) => {
-    setApiKey(key);
-    localStorage.setItem('openai_api_key', key);
-    toast({
-        title: "API Key Saved",
-        description: "Your API key has been saved locally.",
-    });
-  };
 
   const handleTextGenerate = async () => {
     if (!prompt) {
@@ -129,7 +112,7 @@ export default function AIAssistPage() {
             </SidebarTitle>
         </SidebarHeader>
         <SidebarContent className="p-4 space-y-4">
-          <ApiKeySettings apiKey={apiKey} setApiKey={handleApiKeySave} />
+          <ApiKeySettings />
           <ParameterControls
             temperature={temperature}
             setTemperature={setTemperature}
